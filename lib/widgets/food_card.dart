@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_and_dart/derzkay_margo.dart';
 import 'package:flutter_and_dart/models/food.dart';
+import 'package:flutter_and_dart/screens/detail_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_and_dart/constants/images.dart';
 
@@ -123,9 +123,7 @@ class FoodCard extends StatelessWidget {
             child: GestureDetector(
               onTap: () => Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const DerzkayMargoPage(),
-                ),
+                MaterialPageRoute(builder: (context) => DetailPage(food: food)),
               ),
               child: Container(
                 width: 285,

@@ -5,29 +5,28 @@ class AdditionalWidget extends StatelessWidget {
   const AdditionalWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {print('');
+  Widget build(BuildContext context) {
     return Container(
       width: 284,
       height: 295,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12), 
+        borderRadius: BorderRadius.circular(12),
       ),
-      
+
       child: Stack(
         children: [
-          
           // Первый элемент карточки
           Positioned(
             top: 5,
             left: 0,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8), 
+              borderRadius: BorderRadius.circular(8),
               child: Image.asset(
                 AppImages.coffee,
                 width: 61,
                 height: 61,
-                fit: BoxFit.cover, 
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -63,9 +62,9 @@ class AdditionalWidget extends StatelessWidget {
             top: 81,
             left: 0,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8), 
+              borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                AppImages.coffee, 
+                AppImages.coffee,
                 width: 61,
                 height: 61,
                 fit: BoxFit.cover, // Заполняет квадрат без искажений
@@ -104,9 +103,9 @@ class AdditionalWidget extends StatelessWidget {
             top: 157,
             left: 0,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8), 
+              borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                AppImages.coffee, 
+                AppImages.coffee,
                 width: 61,
                 height: 61,
                 fit: BoxFit.cover,
@@ -145,12 +144,12 @@ class AdditionalWidget extends StatelessWidget {
             top: 233,
             left: 0,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8), 
+              borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                AppImages.coffee, 
+                AppImages.coffee,
                 width: 61,
                 height: 61,
-                fit: BoxFit.cover, 
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -187,8 +186,8 @@ class AdditionalWidget extends StatelessWidget {
             child: Image.asset(
               AppImages.line,
               width: 44,
-              height: 1, 
-              fit: BoxFit.cover, 
+              height: 1,
+              fit: BoxFit.cover,
             ),
           ),
         ],

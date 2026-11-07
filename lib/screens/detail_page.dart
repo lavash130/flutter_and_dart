@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; 
+import 'package:flutter_and_dart/models/food.dart';
+import 'package:flutter_and_dart/widgets/additional_widget.dart';
+import 'package:flutter_and_dart/widgets/reviews_widget.dart';
+import 'package:flutter_and_dart/widgets/similar_widget.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_and_dart/constants/images.dart';
-import 'widgets/additional_widget.dart';
-import 'widgets/similar_widget.dart';
-import 'widgets/reviews_widget.dart';
 
-class VkusnyashkaMiaPage extends StatefulWidget {
-  const VkusnyashkaMiaPage({super.key});
+class DetailPage extends StatefulWidget {
+  const DetailPage({super.key, required this.food});
+
+  final Food food;
 
   @override
-  State<VkusnyashkaMiaPage> createState() => _VkusnyashkaMiaPageState();
+  State<DetailPage> createState() => _DetailPageState();
 }
 
-class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
+class _DetailPageState extends State<DetailPage> {
   int _selectedTab = 0;
 
   @override
@@ -48,11 +51,11 @@ class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
                 Positioned(
                   top: 0,
                   left: 0,
-                  child: Container(
+                  child: SizedBox(
                     width: 370,
                     height: 286,
                     child: Image.asset(
-                      AppImages.eatphoto3,
+                      widget.food.imagePath,
                       width: 370,
                       height: 286,
                       fit: BoxFit.cover,
@@ -95,7 +98,7 @@ class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
                   top: 310,
                   child: GestureDetector(
                     child: SvgPicture.asset(
-                      AppImages.heart, 
+                      AppImages.heart,
                       width: 24,
                       height: 24,
                     ),
@@ -107,11 +110,11 @@ class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
                   left: 45,
                   top: 337,
                   child: Container(
-                    width: 200,
+                    width: 180,
                     height: 33,
                     alignment: Alignment.centerLeft,
-                    child: const Text(
-                      'Вкусняшка Миа',
+                    child: Text(
+                      widget.food.title,
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -119,7 +122,6 @@ class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
                     ),
                   ),
                 ),
-                
                 Positioned(
                   left: 45,
                   top: 372,
@@ -129,15 +131,12 @@ class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
                     height: 14,
                   ),
                 ),
-                const Positioned(
+                Positioned(
                   left: 66,
                   top: 370,
                   child: Text(
-                    '4,6',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    widget.food.rating,
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
                 ),
                 const Positioned(
@@ -156,14 +155,11 @@ class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
                     height: 19,
                     alignment: Alignment.centerLeft,
                     child: RichText(
-                      text: const TextSpan(
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                        ),
+                      text: TextSpan(
+                        style: TextStyle(fontSize: 14, color: Colors.black),
                         children: [
                           TextSpan(
-                            text: '20-30 ',
+                            text: '${widget.food.time} ',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           TextSpan(text: 'мин'),
@@ -180,18 +176,17 @@ class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
                     height: 44,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      children: const [
+                      children: [
                         Padding(
                           padding: EdgeInsets.only(bottom: 6),
                           child: Text('₽', style: TextStyle(fontSize: 14)),
                         ),
                         SizedBox(width: 2),
-                        Text('350', style: TextStyle(fontSize: 32)),
+                        Text(widget.food.price, style: TextStyle(fontSize: 32)),
                       ],
                     ),
                   ),
                 ),
-
                 Positioned(
                   left: 45,
                   top: 400,
@@ -227,7 +222,7 @@ class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
                     ),
                   ),
                 ),
-                
+
                 // Кнопка "Дополнительно"
                 Positioned(
                   left: 33,
@@ -296,15 +291,15 @@ class _VkusnyashkaMiaPageState extends State<VkusnyashkaMiaPage> {
 
                 // Контейнер с вкладками
                 Positioned(
-                  left: (370 - 284) / 2,
+                  left: 43,
                   top: 620,
-                  child: _selectedTab == 0 
-                      ? const AdditionalWidget() 
-                      : _selectedTab == 1 
-                          ? const SimilarWidget() 
-                          : const ReviewsWidget(),
+                  child: _selectedTab == 0
+                      ? const AdditionalWidget()
+                      : _selectedTab == 1
+                      ? const SimilarWidget()
+                      : const ReviewsWidget(), // 👈 Теперь здесь отзывы
                 ),
-              ],      
+              ],
             ),
           ),
         ),
